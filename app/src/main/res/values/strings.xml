@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Resepku</string>
+
+    <string name="profile">Profile</string>
+    <string name="recipe_name">Nama Resep</string>
+    <string name="description">Deskripsi</string>
+
+    <string name="ingredient">Bahan-bahan</string>
+    <string name="step">Cara Membuat</string>
+
+    <string name="dummy_data">asdasdasdasdsadasdasdasdsaasdasd\nasdasdasdasdsadasdasdasdsaasdasd\nasdasdasdasdsadasdasdasdsaasdasd</string>
+    <string name="share">Share</string>
+    <string name="email_ferdi">ferdiananta51@gmail.com</string>
+    <string name="email">Email</string>
+    <string name="android_developer">Android Developer</string>
+    <string name="instagram">Instagram</string>
+    <string name="ferdiananta5">ferdiananta5</string>
+    <string name="ferdi_ananta_salman">Ferdi Ananta Salman</string>
+</resources>
