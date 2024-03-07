@@ -6,11 +6,17 @@ import android.os.Bundle
 import android.os.Handler
 import com.example.submissiondicodingpemula.MainActivity
 import com.example.submissiondicodingpemula.R
+import com.example.submissiondicodingpemula.databinding.ActivityMainBinding
+import com.example.submissiondicodingpemula.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySplashBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+//        setContentView(R.layout.activity_splash)
 
         Handler().postDelayed({
             startActivity(Intent(this, MainActivity::class.java))

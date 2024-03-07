@@ -11,13 +11,16 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.submissiondicodingpemula.R
 import com.example.submissiondicodingpemula.activity.DetailActivity
+import com.example.submissiondicodingpemula.databinding.ItemRowRecipeBinding
 import com.example.submissiondicodingpemula.model.Recipe
 
 class ListRecipeAdapter(private val listRecipe: ArrayList<Recipe>) : RecyclerView.Adapter<ListRecipeAdapter.ListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_recipe, parent, false)
-        return ListViewHolder(view)
+//        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_recipe, parent, false)
+//        return ListViewHolder(view)
+        val binding = ItemRowRecipeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ListViewHolder(binding)
     }
 
     override fun getItemCount(): Int = listRecipe.size
@@ -25,9 +28,9 @@ class ListRecipeAdapter(private val listRecipe: ArrayList<Recipe>) : RecyclerVie
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val recipe = listRecipe[position]
 
-        holder.imgPhoto.setImageResource(recipe.photo!!)
-        holder.tvName.text = recipe.name
-        holder.tvDescription.text = recipe.description
+        holder.binding.imgItemPhoto.setImageResource(recipe.photo!!)
+        holder.binding.tvItemName.text = recipe.name
+        holder.binding.tvItemDescription.text = recipe.description
 
         Log.i("FRD", recipe.toString())
 
@@ -47,9 +50,10 @@ class ListRecipeAdapter(private val listRecipe: ArrayList<Recipe>) : RecyclerVie
 
     }
 
-    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
-        val tvName: TextView = itemView.findViewById(R.id.tv_item_name)
-        val tvDescription: TextView = itemView.findViewById(R.id.tv_item_description)
-    }
+    inner class ListViewHolder(var binding: ItemRowRecipeBinding) : RecyclerView.ViewHolder(binding.root)
+//    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+//        val imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
+//        val tvName: TextView = itemView.findViewById(R.id.tv_item_name)
+//        val tvDescription: TextView = itemView.findViewById(R.id.tv_item_description)
+//    }
 }

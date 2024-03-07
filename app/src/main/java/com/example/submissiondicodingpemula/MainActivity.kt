@@ -10,28 +10,37 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.submissiondicodingpemula.activity.AboutActivity
 import com.example.submissiondicodingpemula.adapter.ListRecipeAdapter
 import com.example.submissiondicodingpemula.data.RecipeData
+import com.example.submissiondicodingpemula.databinding.ActivityMainBinding
 import com.example.submissiondicodingpemula.model.Recipe
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var rvRecipes: RecyclerView
+    private lateinit var binding: ActivityMainBinding
+//    private lateinit var rvRecipes: RecyclerView
 
     private val list = ArrayList<Recipe>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+//        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
 
-        rvRecipes = findViewById(R.id.rv_recipes)
-        rvRecipes.setHasFixedSize(true)
+//        rvRecipes = findViewById(R.id.rv_recipes)
+//        rvRecipes.setHasFixedSize(true)
+
+        binding.rvRecipes.setHasFixedSize(true)
 
         list.addAll(RecipeData.dataRecipe)
         showRecyclerList()
     }
 
     private fun showRecyclerList() {
-        rvRecipes.layoutManager = LinearLayoutManager(this)
+//        rvRecipes.layoutManager = LinearLayoutManager(this)
+//        val listRecipeAdapter = ListRecipeAdapter(list)
+//        rvRecipes.adapter = listRecipeAdapter
+        binding.rvRecipes.layoutManager = LinearLayoutManager(this)
         val listRecipeAdapter = ListRecipeAdapter(list)
-        rvRecipes.adapter = listRecipeAdapter
+        binding.rvRecipes.adapter = listRecipeAdapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

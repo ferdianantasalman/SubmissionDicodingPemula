@@ -10,15 +10,19 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.submissiondicodingpemula.R
+import com.example.submissiondicodingpemula.databinding.ActivityDetailBinding
+import com.example.submissiondicodingpemula.databinding.ActivitySplashBinding
 
 class DetailActivity : AppCompatActivity() {
 
-    private lateinit var tvNameDetail: TextView
-    private lateinit var tvDescriptionDetail: TextView
-    private lateinit var tvIngredientDetail: TextView
-    private lateinit var tvStepDetail: TextView
-    private lateinit var ivImageDetail: ImageView
-    private lateinit var btnShare: Button
+//    private lateinit var tvNameDetail: TextView
+//    private lateinit var tvDescriptionDetail: TextView
+//    private lateinit var tvIngredientDetail: TextView
+//    private lateinit var tvStepDetail: TextView
+//    private lateinit var ivImageDetail: ImageView
+//    private lateinit var btnShare: Button
+
+    private lateinit var binding: ActivityDetailBinding
 
     companion object {
         const val EXTRA_NAME = "extra_name"
@@ -29,19 +33,21 @@ class DetailActivity : AppCompatActivity() {
 
     }
 
-    fun instanceView() {
-        tvNameDetail = findViewById(R.id.tv_name_detail)
-        tvDescriptionDetail = findViewById(R.id.tv_description_detail)
-        tvIngredientDetail = findViewById(R.id.tv_ingredient_detail)
-        tvStepDetail = findViewById(R.id.tv_step_detail)
-        ivImageDetail = findViewById(R.id.iv_image_detail)
-    }
+//    fun instanceView() {
+//        tvNameDetail = findViewById(R.id.tv_name_detail)
+//        tvDescriptionDetail = findViewById(R.id.tv_description_detail)
+//        tvIngredientDetail = findViewById(R.id.tv_ingredient_detail)
+//        tvStepDetail = findViewById(R.id.tv_step_detail)
+//        ivImageDetail = findViewById(R.id.iv_image_detail)
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
+        binding = ActivityDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+//        setContentView(R.layout.activity_detail)
 
-        instanceView()
+//        instanceView()
 
         val appBar = supportActionBar
         appBar!!.title = "Detail Resep"
@@ -57,11 +63,11 @@ class DetailActivity : AppCompatActivity() {
         if (nameDetail != null) {
             Log.i("NAMEDETAIL", nameDetail)
 
-            tvNameDetail.text = nameDetail
-            tvDescriptionDetail.text = descriptionDetail
-            tvIngredientDetail.text = ingredientDetail
-            tvStepDetail.text = stepDetail
-            ivImageDetail.setImageResource(imageDetail)
+            binding.tvNameDetail.text = nameDetail
+            binding.tvDescriptionDetail.text = descriptionDetail
+            binding.tvIngredientDetail.text = ingredientDetail
+            binding.tvStepDetail.text = stepDetail
+            binding.ivImageDetail.setImageResource(imageDetail)
         }
 
     }
@@ -86,7 +92,7 @@ class DetailActivity : AppCompatActivity() {
             R.id.share -> {
                 val recipeShare = Intent()
                 recipeShare.action = Intent.ACTION_SEND
-                recipeShare.putExtra(Intent.EXTRA_TEXT, "Ini adalah hasil share dari resep: ${tvNameDetail.text}")
+                recipeShare.putExtra(Intent.EXTRA_TEXT, "Ini adalah hasil share dari resep: ${binding.tvNameDetail.text}")
                 recipeShare.type = "text/plain"
                 startActivity(Intent.createChooser(recipeShare, "Share To:"))
             }
